@@ -479,7 +479,6 @@ impl ProcessSMPP {
     }
 }
 
-
 fn main() {
     // Get command-line arguments
     let args: Vec<String> = env::args().collect();
@@ -530,7 +529,7 @@ fn main() {
     }
 
     log::info!("----------------------------------------------------------");
-    let all_resp_time_count = process_smpp.smpp_stats.resp_time_2ms_count 
+    let all_resp_time_count = process_smpp.smpp_stats.resp_time_2ms_count
         + process_smpp.smpp_stats.resp_time_5ms_count
         + process_smpp.smpp_stats.resp_time_10ms_count
         + process_smpp.smpp_stats.resp_time_30ms_count
@@ -556,7 +555,7 @@ fn main() {
             / (process_smpp.smpp_stats.resp_time_2ms_count as f64))
             / 1000.0_f64,
         100.0 * process_smpp.smpp_stats.resp_time_2ms_count as f64 / all_resp_time_count as f64
-    );    
+    );
 
     log::info!(
         "resp time  5ms count:{:10} avg:{:7.2}(ms) pct:{:5.2}%",
@@ -619,7 +618,7 @@ fn main() {
             timeout_count += 1;
         }
     }
-    
+
     log::info!("----------------------------------------------------------");
 
     let mut sum_max_sent_request = 0;
@@ -631,7 +630,11 @@ fn main() {
         );
         sum_max_sent_request += value.max_sent_requests;
     }
-    log::info!("Sum all Request in each TCP sessions :{:5} vs Global View Total Reuqest:{:5}", sum_max_sent_request, process_smpp.smpp_stats.max_total_sent_request);
+    log::info!(
+        "Sum all Request in each TCP sessions :{:5} vs Global View Total Reuqest:{:5}",
+        sum_max_sent_request,
+        process_smpp.smpp_stats.max_total_sent_request
+    );
     log::info!("----------------------------------------------------------");
     log::warn!(
         "Missing Answer Count:{:10} Timeout_count:{:10}",
