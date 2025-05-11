@@ -147,7 +147,7 @@ impl ProcessSMPP {
         if data.len() >= 14 {
             let ethertype = u16::from_be_bytes([data[12], data[13]]);
             log::debug!(
-                "Ethernet Layer: SrcMac:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X} DstMac:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X} Ethertype = 0x{:04x}",
+                "Ethernet Layer: SrcMac:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X} DstMac:{:02X}:{:02X}:{:02X}:{:02X}:{:02X}:{:02X} Ethertype: 0x{:04x}",
                 data[0],
                 data[1],
                 data[2],
